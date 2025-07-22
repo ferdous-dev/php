@@ -36,10 +36,9 @@ The notes are divided into topic-wise markdown files. Each file contains concise
 ## 🚀 How to Use
 
 1. Clone or download the repo:
-   ```bash
+```bash
    git clone https://github.com/ferdous-dev/php.git
 ```
-
 2. Open the folder in **Obsidian**, **VS Code**, or any markdown editor.
 3. Use the notes like a **reference book** — copy & run code snippets locally to practice.
 
