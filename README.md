@@ -1,53 +1,29 @@
-
-```markdown
-# PHP Core Concepts – Obsidian Notes
+# PHP Core Concepts
 
 A structured, beginner-friendly collection of **PHP core concepts** designed for use with [Obsidian](https://obsidian.md). These notes are organized by topic with clear examples, making them perfect for students, junior developers, or anyone revising PHP fundamentals.
 
 ---
-
 ## 📘 Structure
 
 The notes are divided into topic-wise markdown files. Each file contains concise explanations and live PHP examples.
 
 ### ✅ Topics Covered
 
-| #   | Title                         | Description                                                               |
-|-----|-------------------------------|---------------------------------------------------------------------------|
-| 1   | Getting Started with PHP      | Basic syntax, setup, tags, and first script                              |
-| 2   | Data Types                    | Scalars, arrays, objects, null, type casting, and related examples       |
-| 3   | Control Structures            | `if`, `else`, `switch`, `while`, `for`, `foreach`, and truthy/falsy      |
-| 4   | Functions                     | Declaration, parameters, default values, return types, variadic, etc.    |
-| 5   | Object-Oriented Programming   | Classes, objects, inheritance, constructors, encapsulation, magic methods|
-| 6   | Standard Libraries            | Built-in string functions (`strlen`, `substr`, etc.), arrays, math       |
-| 7   | Namespace & Ternary Operators| Organizing code with namespaces; shorthand `?:` and null coalescing `??` |
-| 8   | Error Handling                | `try`, `catch`, `throw`, `finally`, and exceptions                       |
-| 9   | Input and Output              | HTML forms, `$_POST`, file read/write using `fopen`, `fwrite`, etc.      |
-| 10  | Miscellaneous                 | Sessions, cookies, additional tips and tricks                            |
+| #   | Title                    | Description                                                                 |
+| --- | ------------------------ | --------------------------------------------------------------------------- |
+| 0   | Basic Structure of PHP   | Introduction to PHP, tags, basic syntax structure                           |
+| 1   | Syntax                   | Overview of PHP syntax, including operators (arithmetic, logical, etc.).    |
+| 2   | Variables & Data Types   | How to declare variables and use different data types in PHP.               |
+| 3   | Control Structures       | Flow control using `if`, `else`, `switch`, loops like `while`, `for`, etc.  |
+| 4   | Functions                | Declaration, parameters, default values, return types, variadic, etc.       |
+| 5   | Data Structures          | Working with arrays, associative arrays, and basic data handling.           |
+| 6   | Standard Libraries       | Common built-in string, array, math, and utility functions in PHP.          |
+| 7   | Object-Oriented Features | OOP principles: classes, objects, inheritance, constructors, encapsulation. |
+| 8   | Error Handling           | Handling errors with `try`, `catch`, `throw`, and `finally`.                |
+| 9   | Input and Output         | Handling user input via forms and working with files (read/write).          |
+| 10  | Miscellaneous            | Sessions, cookies                                                           |
 
 ---
-
-## 📂 Example Folder Structure
-
-```
-
-php-core-concepts/  
-│  
-├── 1. Getting Started with PHP.md  
-├── 2. Data Types.md  
-├── 3. Control Structures.md  
-├── 4. Functions.md  
-├── 5. Object-Oriented Programming.md  
-├── 6. Standard Libraries.md  
-├── 7. Namespace & Ternary Operators.md  
-├── 8. Error Handling.md  
-├── 9. Input and Output.md  
-└── 10. Miscellaneous.md
-
-```
-
----
-
 ## 🧠 Features
 
 - Written in **Markdown** — easy to read and portable across editors
@@ -61,13 +37,11 @@ php-core-concepts/
 
 1. Clone or download the repo:
    ```bash
-   git clone https://github.com/your-username/php-core-concepts.git
+   git clone https://github.com/ferdous-dev/php.git
 ```
 
 2. Open the folder in **Obsidian**, **VS Code**, or any markdown editor.
-    
 3. Use the notes like a **reference book** — copy & run code snippets locally to practice.
-    
 
 ---
 
@@ -76,13 +50,9 @@ php-core-concepts/
 Have an idea to improve the notes? Found a mistake? PRs are welcome!
 
 You can contribute:
-
 - More examples
-    
 - PHP 8.x/8.1+ feature notes
-    
 - Real-world mini challenges
-    
 
 ---
 
@@ -91,20 +61,8 @@ You can contribute:
 MIT License — feel free to use, share, or modify these notes.
 
 ---
-
 ### ✨ Author
 
 Created by **Ferdous Ahmed**  
 _PHP learner & aspiring Laravel developer_  
 🇧🇩 Based in Bangladesh
-
----
-
-Happy Coding! 🚀
-
-```
-
----
-
-Would you like me to generate this as a downloadable `README.md` file? Or edit it further for GitHub Pages or Obsidian Publish?
-```
