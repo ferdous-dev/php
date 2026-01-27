@@ -10,7 +10,6 @@
 - PHP Server
 - MySQL by Weijan Chen
 - PHP Intelephense
-- Code Spell Checker
 - Auto Rename Tag
 ### Xdebug Setup
 - Paste `XDebug` dll file inside XAMPP/php/ext

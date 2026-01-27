@@ -191,4 +191,4 @@ echo json_encode($arr); // Output: {"name":"John","age":30}
 - `sort()`, `rsort()` – Sort indexed arrays
 - `ksort()`, `asort()` – Sort associative arrays
 ---
-← [[04. Functions and Procedures]] | [[06. Standard Libraries]] →
+← [[04-Functions]] | [[06-Standard-Libraries]] →

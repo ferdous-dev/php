@@ -5,32 +5,31 @@ A structured, beginner-friendly collection of **PHP core concepts** designed for
 ---
 ## 📘 Structure
 
-The notes are divided into topic-wise markdown files. Each file contains concise explanations and live PHP examples.
+Each topic is covered in a separate Markdown file, ordered from basics to essential concepts:
 
 ### ✅ Topics Covered
 
-| #   | Title                    | Description                                                                 |
-| --- | ------------------------ | --------------------------------------------------------------------------- |
-| 0   | Basic Structure of PHP   | Introduction to PHP, tags, basic syntax structure                           |
-| 1   | Syntax                   | Overview of PHP syntax, including operators (arithmetic, logical, etc.).    |
-| 2   | Variables & Data Types   | How to declare variables and use different data types in PHP.               |
-| 3   | Control Structures       | Flow control using `if`, `else`, `switch`, loops like `while`, `for`, etc.  |
-| 4   | Functions                | Declaration, parameters, default values, return types, variadic, etc.       |
-| 5   | Data Structures          | Working with arrays, associative arrays, and basic data handling.           |
-| 6   | Standard Libraries       | Common built-in string, array, math, and utility functions in PHP.          |
-| 7   | Object-Oriented Features | OOP principles: classes, objects, inheritance, constructors, encapsulation. |
-| 8   | Error Handling           | Handling errors with `try`, `catch`, `throw`, and `finally`.                |
-| 9   | Input and Output         | Handling user input via forms and working with files (read/write).          |
-| 10  | Miscellaneous            | Sessions, cookies                                                           |
+| #   | Title                       | Description                                                                             |
+| --- | --------------------------- | --------------------------------------------------------------------------------------- |
+| 00  | Introduction                | What PHP is, how it works, basic structure                                              |
+| 01  | Syntax                      | PHP tags, statements, comments, operators (arithmetic, logical, etc.)                   |
+| 02  | Variables & Data Types      | Variables, constants, data types                                                        |
+| 03  | Control Structures          | Sequential Control, Selection Control (Decision Making) &<br>Repetition Control (Loops) |
+| 04  | Functions                   | Declaration, parameters, default values, return types, variadic, etc.                   |
+| 05  | Data Structures             | Indexed, associative, multidimensional arrays                                           |
+| 06  | Standard Libraries          | Common built-in string, array, math, and utility functions                              |
+| 07  | Object-Oriented Programming | Classes, objects, inheritance, encapsulation                                            |
+| 08  | Error Handling              | Handling errors with `try`, `catch`, `throw`, and `finally`.                            |
+| 09  | Input, Output and Files     | Forms, file read/write                                                                  |
+| 10  | Sessions & Cookies          | State management in PHP                                                                 |
 
 ---
 ## 🧠 Features
 
 - Written in **Markdown** — easy to read and portable across editors
-- Loaded with **real PHP examples** for each topic
+- Practical **PHP code examples**
 - Ideal for **Obsidian** (supports backlinks, graph view, tagging)
-- Good for **interview prep**, **revision**, or **teaching others**
-
+- Great for **revision** and **interview prep**
 ---
 
 ## 🚀 How to Use
@@ -43,21 +42,29 @@ The notes are divided into topic-wise markdown files. Each file contains concise
 3. Use the notes like a **reference book** — copy & run code snippets locally to practice.
 
 ---
+## 🛠 Requirements
 
+- PHP 8.0 or later
+- Optional: XAMPP / WAMP / Laragon for local server
+- Any code editor (VS Code recommended)
+
+---
 ## 🤝 Contributions
 
-Have an idea to improve the notes? Found a mistake? PRs are welcome!
+Contributions are welcome!
 
-You can contribute:
-- More examples
-- PHP 8.x/8.1+ feature notes
-- Real-world mini challenges
+You can help by:
+- Adding more examples
+- Fixing mistakes or typos
+- Adding PHP 8.x features
+- Writing mini challenges
+Feel free to open an issue or submit a PR.
 
 ---
 
 ## 📜 License
 
-MIT License — feel free to use, share, or modify these notes.
+MIT License — feel free to use, share, or modify.
 
 ---
 ### ✨ Author

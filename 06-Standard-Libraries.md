@@ -160,4 +160,4 @@ var_dump(isset($name));
 ## **Modules/Packages:** 
 Collections of related functions and classes that extend the functionality of the language.
 
-← [[05. Data Structures|05. Data Structures]] | [[07. Object-Oriented Features]] →
+← [[05-Arrays-and-Data-Structures|05. Data Structures]] | [[07-Object-Oriented-Programming]] →

@@ -131,5 +131,5 @@ class MyClass {
 echo MyClass::CONSTANT_NAME; // Outputs: value
 ?>
 ```
-→ Next: [[03. Control Structures|03. Control Structures]]
-← Back: [[01. Syntax]]
+→ Next: [[03-Control-Structures|03. Control Structures]]
+← Back: [[01-Syntax]]
