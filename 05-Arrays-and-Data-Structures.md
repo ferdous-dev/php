@@ -9,17 +9,17 @@
 ##### Indexed Arrays
 **Creating an Indexed Array**
 ```php
-$numbers = array(1, 2, 3, 4, 5);  // Using array() function
+$numbers = array(1, 2, 3, 4, 5);          // Using array() function
 $fruits = ["apple", "banana", "cherry"];  // Using short array syntax
 
 // Accessing elements
 echo $numbers[2];  // Output: 3
-echo $fruits[0];  // Output: apple
+echo $fruits[0];   // Output: apple
 ```
 **Adding Elements**
 ```php
 $colors = ["red", "green"];
-$colors[] = "blue";  // Append an element
+$colors[] = "blue";             // Append an element
 array_push($colors, "yellow");  // Using array_push
 
 print_r($colors);
@@ -60,7 +60,7 @@ $car = ["make" => "Toyota", "model" => "Camry", "year" => 2020];
 
 // Accessing elements
 echo $person["name"];  // Output: John
-echo $car["model"];  // Output: Camry
+echo $car["model"];    // Output: Camry
 ```
 **Adding Elements**
 ```php
@@ -128,67 +128,5 @@ foreach ($person as $key => $value) {
 // Output: name: John age: 30 city: New York 
 ```
 
-##### Useful Array Functions
-**Sorting Arrays**
-```php
-$numbers = [4, 2, 8, 6];
-sort($numbers);  // Sorts in ascending order
-
-$fruits = ["apple", "banana", "cherry"];
-rsort($fruits);  // Sorts in descending order
-
-$person = ["name" => "John", "age" => 30, "city" => "New York"];
-asort($person);  // Sorts associative array by values
-ksort($person);  // Sorts associative array by keys
-```
-**Array Search**
-```php
-$numbers = [1, 2, 3, 4, 5];
-$key = array_search(3, $numbers);
-echo $key;  // Output: 2
-
-$person = ["name" => "John", "age" => 30, "city" => "New York"];
-if (array_key_exists("age", $person)) {
-    echo "Age is " . $person["age"];  // Output: Age is 30
-}
-```
-**Merging Arrays**
-```php
-$array1 = ["a", "b", "c"];
-$array2 = [1, 2, 3];
-$merged = array_merge($array1, $array2);
-
-print_r($merged);
-// Output:
-// Array
-// (
-//     [0] => a
-//     [1] => b
-//     [2] => c
-//     [3] => 1
-//     [4] => 2
-//     [5] => 3
-// )
-```
-- **Advanced Array Functions** to mention briefly or in a future note:
-	- `array_map()`
-	- `array_filter()`
-	- `array_reduce()`
-	- `in_array()`
-- **JSON encoding/decoding** as a common way to serialize PHP arrays:
-```php
-$arr = ["name" => "John", "age" => 30];
-echo json_encode($arr); // Output: {"name":"John","age":30}
-```
-
----
-**Quick Reference**
-- `array_push()` – Add to end
-- `array_pop()` – Remove from end
-- `array_shift()` – Remove from beginning
-- `array_merge()` – Combine arrays
-- `array_search()` – Find a value's key
-- `sort()`, `rsort()` – Sort indexed arrays
-- `ksort()`, `asort()` – Sort associative arrays
 ---
 ← [[04-Functions]] | [[06-Standard-Libraries]] →

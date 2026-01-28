@@ -75,3 +75,5 @@ The @ sign can be used to prevent expressions from generating error messages.
 
 ## PHP Punctuation
 Characters that serve as delimiters or separators (e.g., `{}`, `()`, `;`).
+
+→ Next: [[02-Variables-and-Data-Types]]

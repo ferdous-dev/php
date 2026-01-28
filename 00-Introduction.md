@@ -12,44 +12,95 @@
 
 ```php
 <?php
-// Variables and Data Types
-$x = 10;
-$y = 20.5;
-$name = "Alice";
-$isStudent = true;
+/*
+|--------------------------------------------------------------------------
+| 1. VARIABLES
+|--------------------------------------------------------------------------
+| Variables store data we want to use later.
+*/
 
-// Conditional Statement
-if ($x > $y) {
-    echo "x is greater than y";
+$age = 20;                 // Integer
+$height = 5.9;             // Float
+$name = "Alice";           // String
+$isStudent = true;         // Boolean
+
+/*
+|--------------------------------------------------------------------------
+| 2. CONDITIONAL STATEMENT
+|--------------------------------------------------------------------------
+| Used to make decisions.
+*/
+
+if ($age >= 18) {
+    echo "You are an adult.";
 } else {
-    echo "x is not greater than y";
+    echo "You are a minor.";
 }
 
-// Loop
-for ($i = 0; $i < 5; $i++) {
-    echo $i;
+/*
+|--------------------------------------------------------------------------
+| 3. LOOP
+|--------------------------------------------------------------------------
+| Repeats code multiple times.
+*/
+
+for ($i = 1; $i <= 3; $i++) {
+    echo "Loop number: $i\n";
 }
 
-// Function
+
+/*
+|--------------------------------------------------------------------------
+| 4. FUNCTION
+|--------------------------------------------------------------------------
+| A reusable block of code.
+*/
+
 function add($a, $b) {
     return $a + $b;
 }
 
-$result = add($x, $y);
-echo $result;
+$result = add(5, 7);
+echo $result . "\n";
 
-// Arrays
-$fruits = array("Apple", "Banana", "Cherry");
+/*
+|--------------------------------------------------------------------------
+| 5. ARRAYS
+|--------------------------------------------------------------------------
+| Used to store multiple values.
+*/
+
+$fruits = ["Apple", "Banana", "Cherry"];
+
 foreach ($fruits as $fruit) {
-    echo $fruit;
+    echo $fruit . "\n";
 }
 
-// Associative Arrays
-$person = array("name" => "Alice", "age" => 30);
-echo $person["name"];
+/*
+|--------------------------------------------------------------------------
+| 6. ASSOCIATIVE ARRAY
+|--------------------------------------------------------------------------
+| Uses keys instead of numbers.
+*/
 
-// Class and Object
+$user = [
+    "name" => "Alice",
+    "age"  => 30
+];
+
+foreach ($user as $key => $value) {
+    echo "$key: $value\n";
+}
+
+/*
+|--------------------------------------------------------------------------
+| 7. CLASS (OBJECT-ORIENTED PHP)
+|--------------------------------------------------------------------------
+| A blueprint for creating objects.
+*/
+
 class Person {
+	// private means these properties cannot be accessed directly from outside the class
     private $name;
     private $age;
 
@@ -66,38 +117,22 @@ class Person {
 $alice = new Person("Alice", 30);
 $alice->greet();
 
-// Error Handling
+/*
+|--------------------------------------------------------------------------
+| 8. ERROR HANDLING
+|--------------------------------------------------------------------------
+| Prevents crashes when something goes wrong.
+*/
+
 try {
-    if ($x > $y) {
-        throw new Exception("x should not be greater than y");
+    if ($age < 0) {
+        throw new Exception("Age cannot be negative.");
     }
-} catch (Exception $e) {
-    echo 'Caught exception: ',  $e->getMessage(), "\n";
+} catch (Exception $error) {
+    echo $error->getMessage();
 }
 ?>
 
 ```
-### Explanation
-
-1. **Variables and Data Types:**
-	- `$x`, `$y`, `$name`, and `$isStudent` are variables of different data types.
-
-2. **Conditional Statement:**
-    - An `if-else` statement compares `$x` and `$y` and prints the result.
-
-3. **Loop:**
-    - A `for` loop prints numbers from 0 to 4.
-
-4. **Function:**
-    - A function `add` takes two parameters and returns their sum.
-
-5. **Arrays:**
-    - An indexed array `$fruits` and an associative array `$person` are demonstrated.
-
-6. **Class and Object:**
-    - A `Person` class with a constructor and a method `greet` is defined and instantiated.
-
-7. **Error Handling:**
-    - A `try-catch` block demonstrates basic exception handling.
 
 This example covers the essential components of PHP, providing a solid foundation for understanding its basic structure and functionality.

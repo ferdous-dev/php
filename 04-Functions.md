@@ -35,19 +35,6 @@ $result = add(10, 20);
 echo $result; // Outputs: 30
 ```
 
-###### Global Variable Example:
-- The `useGlobalVar` function demonstrates the use of a global variable inside a function.
-```php
-// Global Variable Example
-$globalVar = 100;
-
-function useGlobalVar() {
-    global $globalVar;
-    return $globalVar + 50;
-}
-
-echo useGlobalVar(); // Outputs: 150
-```
 ###### Function with Array Parameter:
 - The `printFruits` function takes an array as a parameter and prints each element.
 ```php
@@ -58,26 +45,22 @@ function printFruits($fruits) {
     }
 }
 
-$fruits = array("Apple", "Banana", "Cherry");
-printFruits($fruits); // Outputs: Apple Banana Cherry 
+$fruits = array("Apple", "Banana", "Mango");
+printFruits($fruits); // Outputs: Apple Banana Mango 
 ```
 
 ###### Anonymous Functions (Closures):
 Closures (anonymous functions) are useful when we want to create inline logic that doesn’t need a named function.
-- The `evenNumbers` variable holds an anonymous function that returns even numbers.
+- The `ages` variable holds an anonymous function that returns even only the adults (18+).
 ```php
 // Anonymous Functions (Closures)
-$numbers = [7, 12, 18, 22, 29, 31, 38, 42];
+$ages = [12, 17, 18, 20, 15, 30];
 
-$evenNumbers = array_filter($numbers, function($number){
-    if ($number % 2 == 0) {
-        return true;
-    } else {
-        return false;
-    }
+$adults = array_filter($ages, function($age) {
+    return $age >= 18; // Keep only ages 18 or older
 });
 
-print_r($evenNumbers); //  Array([1]=>12 [2]=>18 [3]=>22 [4]=>38 [5]=>42);
+print_r($adults); //  Array([2]=>18 [3]=>20 [5]=>30);
 ```
 
 ###### Callback Functions:
@@ -105,33 +88,8 @@ function worldCountryList(...$country) {
 worldCountryList("Bangladesh", "Iran", "Turkey", "Malaysia"); // Return an array
 ```
 ### Built-in Functions:
+Check [[06-Standard-Libraries]]
 
----
-
-Built-in functions are pre-defined functions that are included within the core PHP language. These functions are used without any special requirements or additional installation. PHP has more than 1000 built-in functions. PHP has a wide range of built-in functions that perform various tasks, including:
- - **String Functions**: These functions manipulate strings.
-	 - `strlen()` calculate string length
-	 - `strtoupper()` convert strings to uppercase
-	 - `substr()` extract a portion of a string
- - **Mathematical Functions**: PHP provides numerous functions for mathematical operations.
-	 - `sqrt()` calculating the square root
-	 - `rand()` generates random numbers
- - **Array Functions**: These functions are used for working with arrays.
-	 - `array_push()` add elements to an array
- - **Date and Time Functions**: These functions deal with dates and times.
-	 - `date()` get the current date and time
- - **File System Functions**: PHP provides functions for working with the file system.
-	 - `file_exists()` check if a file exists
-	 - `fopen() `open a file
-	 - `fwrite()` to write to a file
-	 - `fclose()` to close a file
- - **Database Functions**: Works with database
-	 - `mysqli_connect()` to establish a connection to a MySQL database
-
-| Function       | Description              | Example                      | Output     |
-|----------------|--------------------------|------------------------------|------------|
-| `strlen()`     | String length            | `strlen("Hello")`           | `5`        |
-| `strtoupper()` | To uppercase             | `strtoupper("php")`         | `PHP`      |
-| `sqrt()`       | Square root              | `sqrt(16)`                  | `4`        |
-| `rand()`       | Random number            | `rand(1, 10)`               | `7` (varies) |
-See also: [[02-Variables-and-Data-Types]] | [[03-Control-Structures]]
+See also:
+→ Next: [[03-Control-Structures]]
+← Back: [[05-Arrays-and-Data-Structures]]

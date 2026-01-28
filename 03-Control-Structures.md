@@ -40,22 +40,22 @@ This structure allows the program to execute a block of code multiple times.
 - **for** loop
 - **while** loop
 - **do-while** loop (or **repeat-until** loop in some languages)
-## Loops in PHP 
+### Loops in PHP 
 ```php
 // Repetition Control
-// for loop
+// for loop(we know in advance how many times you want to repeat a block of code)
 for ($i = 0; $i < 5; $i++) {
     echo $i;
 }
 
-// while loop
+// while loop (we don’t know in advance how many times the loop should run, but we know the condition that needs to be true)
 $count = 0;
 while ($count < 5) {
     echo $count;
     $count++;
 }
 
-// do-while loop
+// do-while loop(guarantees that the loop body executes at least once)
 $count = 0;
 do {
     echo $count;
@@ -88,9 +88,10 @@ foreach ($person as $key => $value) {
 for ($i = 0; $i < 5; $i++) {
     if ($i == 3) break;
     echo $i; // Output: 012
-}```
+}
+```
 These examples cover the basics of control structures in PHP, demonstrating how to manage the flow of control within a program.
 
 See also:
-- [[2. Variables & Data Types]]
-- [[4. Functions and Procedures]]
+→ Next: [[04-Functions]]
+← Back: [[02-Variables-and-Data-Types]]
