@@ -1,33 +1,41 @@
 Object-Oriented Programming (OOP) in PHP provides several features to support the principles of OOP: encapsulation, inheritance, and polymorphism. Here’s an overview of the key OOP features in PHP:
 
 #### 1. Classes and Objects
-- **Class**: A blueprint for objects that defines properties and methods.
+- **Class**: A class is a blueprint or template that defines what an object will be like.
 - **Object**: An object is an instance of a class. When an object is created, it inherits all the properties and methods defined in the class.
 ```php
+<?php
 class Car {
+    // Properties
+    public $brand;
     public $color;
-    public $model;
 
-    public function __construct($color, $model) {
+    // Constructor (runs automatically when object is created)
+    public function __construct($brand, $color) {
+        $this->brand = $brand;
         $this->color = $color;
-        $this->model = $model;
     }
 
-    public function display() {
-        return "Car: $this->color $this->model";
+    // Method
+    public function getInfo() {
+        return "This car is a {$this->color} {$this->brand}.";
     }
 }
 
-$myCar = new Car("red", "Toyota");
-echo $myCar->display();
+// Create an object (instance of Car)
+$myCar = new Car("Toyota", "Red");
+
+// Use a method
+echo $myCar->getInfo();
+?>
 ```
 **`Note`**
-- **Properties**: Variables that belong to a class.
-- **Methods**: Functions that belong to a class.
+- **Properties**: Data inside class.
+- **Methods**: Function inside class.
 #### 2. Keywords
 In PHP, the `$this`, `self`, `parent`, and `static` keywords are used to refer to different contexts within object-oriented programming. Here’s an explanation of each:
 ##### $this
-`$this` keyword refers to the current instance of the class. It is primarily used to access non-static properties and invoke non-static methods within the class.
+`$this` keyword refers to the **current object instance**. It is used **inside a class method** to access **properties or methods of that specific object**.
 ```php
 class Animal {
     public $name;
@@ -44,9 +52,9 @@ class Animal {
 $animal = new Animal("Cat");
 echo $animal->describe(); // Output: This is a Cat
 ```
-`Note:` We can not access the parent method from the child method using **`$this`**, because this would result in an infinite loop and throw an error.
+`Note:` `$this` **cannot be used in static methods**..
 ##### ::self 
-`::self` refers to the class in which it is used. It is used to access static properties, constants, and methods within the same class. It cannot be used to access instance properties or methods.
+`::self` refers to the **current class** (not the object). It is used to access **static properties, constants, and methods** within the same class. It cannot be used to access **object** properties or methods.
 ```php
 class Animal {
     public static $type = "Animal";
@@ -58,7 +66,7 @@ class Animal {
 
 echo Animal::getType(); // Output: Animal
 ```
-`Note:` Use `self::` when we want to ensure that the reference remains bound to the current class, regardless of any subclassing or overriding.
+**Note:** `self` **does NOT work with inheritance** (it always points to the class where it is written).
 ##### ::parent
 `parent` keyword is used to access members of the parent class within a child class. It is primarily used to invoke overridden methods or access overridden properties from the parent class.
 ```php
@@ -98,11 +106,11 @@ echo Math::add(2, 3);
 ```
 **Note:** The `static` keyword is also used to declare variables in a function which keep their value after the function has ended.
 
-|Keyword|Refers To|Usage Example|
-|---|---|---|
-|`$this`|Current object|`$this->property`|
-|`self::`|Current class (static)|`self::STATIC_VAR`|
-|`parent::`|Parent class (static)|`parent::methodName()`|
+| Keyword    | Refers To              | Usage Example          |
+| ---------- | ---------------------- | ---------------------- |
+| `$this`    | Current object         | `$this->property`      |
+| `self::`   | Current class (static) | `self::STATIC_VAR`     |
+| `parent::` | Parent class (static)  | `parent::methodName()` |
 #### 3. Visibility (Access Modifiers)
 - **public**: Accessible from anywhere.
 - **protected**: Accessible within the class and by inheriting classes.

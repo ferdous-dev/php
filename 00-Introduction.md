@@ -28,7 +28,7 @@ $isStudent = true;         // Boolean
 |--------------------------------------------------------------------------
 | 2. CONDITIONAL STATEMENT
 |--------------------------------------------------------------------------
-| Used to make decisions.
+| Use to make decisions.
 */
 
 if ($age >= 18) {
