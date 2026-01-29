@@ -1,10 +1,14 @@
-Object-Oriented Programming (OOP) in PHP provides several features to support the principles of OOP: encapsulation, inheritance, and polymorphism. Here’s an overview of the key OOP features in PHP:
+Object-Oriented Programming (OOP) in PHP helps organize code using **classes and objects**, making it reusable, scalable, and easier to maintain.
 
-#### 1. Classes and Objects
+PHP supports the core OOP principles:
+- **Encapsulation**
+- **Inheritance**
+- **Polymorphism**
+- **Abstraction**
+### 1. Classes and Objects
 - **Class**: A class is a blueprint or template that defines what an object will be like.
-- **Object**: An object is an instance of a class. When an object is created, it inherits all the properties and methods defined in the class.
+- **Object**: An object is an instance of a class. When an object is created, it has access to all the properties and methods defined in the class.
 ```php
-<?php
 class Car {
     // Properties
     public $brand;
@@ -27,15 +31,15 @@ $myCar = new Car("Toyota", "Red");
 
 // Use a method
 echo $myCar->getInfo();
-?>
 ```
 **`Note`**
 - **Properties**: Data inside class.
 - **Methods**: Function inside class.
-#### 2. Keywords
-In PHP, the `$this`, `self`, `parent`, and `static` keywords are used to refer to different contexts within object-oriented programming. Here’s an explanation of each:
-##### $this
-`$this` keyword refers to the **current object instance**. It is used **inside a class method** to access **properties or methods of that specific object**.
+
+---
+### 2. Important Keywords
+##### `$this`
+`$this` keyword refers to the **current object instance**. It is used **inside a class method** to access **non-static properties or methods of that specific object**.
 ```php
 class Animal {
     public $name;
@@ -44,8 +48,8 @@ class Animal {
         $this->name = $name; // Using $this to refer to the current instance's                                     property
     }
 
-    public function describe() {
-        return "This is a " . $this->name; // Using $this to access a method
+    public function describe() {           // Using $this to access a method
+        return "This is a " . $this->name; 
     }
 }
 
@@ -53,11 +57,11 @@ $animal = new Animal("Cat");
 echo $animal->describe(); // Output: This is a Cat
 ```
 `Note:` `$this` **cannot be used in static methods**..
-##### ::self 
-`::self` refers to the **current class** (not the object). It is used to access **static properties, constants, and methods** within the same class. It cannot be used to access **object** properties or methods.
+##### self:: 
+`self::` refers to the **current class** (not the object). It is used to access **static properties, constants, and methods** within the same class. `self::` does **not support inheritance (late static binding)**
 ```php
 class Animal {
-    public static $type = "Animal";
+    public static $type = "Cat";
 
     public static function getType() {
         return self::$type; // Using self to refer to the static property
@@ -66,9 +70,8 @@ class Animal {
 
 echo Animal::getType(); // Output: Animal
 ```
-**Note:** `self` **does NOT work with inheritance** (it always points to the class where it is written).
-##### ::parent
-`parent` keyword is used to access members of the parent class within a child class. It is primarily used to invoke overridden methods or access overridden properties from the parent class.
+##### parent::
+`parent::` keyword is used to access members of the parent class within a child class. It is primarily used to invoke overridden methods or access overridden properties from the parent class.
 ```php
 class Animal {
     public function makeSound() {
@@ -85,13 +88,14 @@ class Cat extends Animal {
 $cat = new Cat();
 echo $cat->makeSound(); // Output: Some generic animal sound. But specifically, Mew! Mew!
 ```
-`Note:` We can not access non-static properties/variables using the parent keywords, but we can only access static properties of the parent class.
+`Note:` `parent::` can only be used to call **methods** or **static properties/methods** of the parent class.  Non-static properties are accessed via `$this`, not `parent::`.
 
-| `$this`              | `::self`                   | `::parent`                 |
-| -------------------- | -------------------------- | -------------------------- |
-| refers to the object | refers to the class itself | refers to the parent class |
+| `$this`                    | `::self`                            | `::parent`                  |
+| -------------------------- | ----------------------------------- | --------------------------- |
+| Access current object data | Access static members of same class | Access parent class members |
+
 ##### static
-The `static` keyword is used to declare properties and methods of a class as static. Static properties and methods can be used without creating an instance of the class.
+`static` is used to declare **class properties and methods** that belong to the class itself, not to any specific object. Static properties and methods can be accessed **without creating an instance** of the class.
 ```php
 class Math {
     public static $pi = 3.14;
@@ -104,129 +108,107 @@ class Math {
 echo Math::$pi;
 echo Math::add(2, 3);
 ```
-**Note:** The `static` keyword is also used to declare variables in a function which keep their value after the function has ended.
+**Important points:**
+- Static members are accessed using the scope resolution operator `::`, not `->`.
+- Inside a static method, you **cannot use `$this`**, because there is no object instance.
+- Static properties are shared across all uses of the class.
 
-| Keyword    | Refers To              | Usage Example          |
-| ---------- | ---------------------- | ---------------------- |
-| `$this`    | Current object         | `$this->property`      |
-| `self::`   | Current class (static) | `self::STATIC_VAR`     |
-| `parent::` | Parent class (static)  | `parent::methodName()` |
-#### 3. Visibility (Access Modifiers)
+**Note:**  
+The `static` keyword is also used inside functions to declare variables that **retain their value between function calls**.
+
+✅ **Rule of thumb:** Use static for **constants, shared utilities, or counters**, but not for core business data.
+
+---
+### 3. Visibility (Access Modifiers)
 - **public**: Accessible from anywhere.
 - **protected**: Accessible within the class and by inheriting classes.
 - **private**: Accessible only within the class itself.
+  
+- **final:** Prevents inheritance or overriding, but does not control visibility.
+
+---
+### `4. Inheritance`
+Inheritance allows a child class to reuse parent class functionality.
 ```php
-class Car {
-    private $color;
-    protected $model;
-    public $make;
+class ParentClass {
+    public $property = "I am a property";
 
-    public function setColor($color) {
-        $this->color = $color;
-    }
-
-    public function getColor() {
-        return $this->color;
+    public function greet() {
+        echo "Hello from ParentClass";
     }
 }
+
+class ChildClass extends ParentClass {
+    // Child class inherits everything from ParentClass
+}
+
+
+// Creating an instance of the ChildClass
+$child = new ChildClass();
+echo $child->property;  // Output: I am a property
+$child->greet();        // Output: Hello from ParentClass
 ```
-- **final:** The `final` keyword is used to prevent a class from being inherited and to prevent inherited method from being overridden.
-#### 4. Inheritance
-- Allows a class to inherit properties and methods from another class using the `extends` keyword.
+**Key Points**
+- Use `extends` keyword to inherit.
+- Child class **inherits all public and protected members(except private)** of the parent.
+- Child can add its own methods and properties.
+### `5. Method Overriding`
+Method overriding allows a **child class to provide its own implementation** for a method already defined in the parent class. This allows the child class to tailor or extend the behavior of the method to meet its specific needs. When overriding, the method signature (name + parameters) should match the parent method.
 ```php
 // Parent class
-class Animal {
-    public $name;
-    public $type;
-
-    public function __construct($name, $type) {
-        $this->name = $name;
-        $this->type = $type;
-    }
-
-    public function describe() {
-        return "This is a $this->type named $this->name.";
-    }
-}
-
-// Child class
-class Cat extends Animal {
-    public function __construct($name) {
-        parent::__construct($name, "Cat");
-    }
-
-    public function makeSound() {
-        return "Mew! Mew!";
-    }
-}
-
-// Creating an instance of the Cat class
-$myCat = new Cat("Anarcoli");
-
-echo $myCat->describe(); // Output: This is a Cat named Anarcoli.
-echo "<br>";
-echo $myCat->makeSound(); // Output: Mew! Mew!
-```
-##### Overriding Methods
-Overriding methods in PHP refers to the ability of a child class to provide a specific implementation of a method that is already defined in its parent class. This allows the child class to tailor or extend the behavior of the method to meet its specific needs.
-```php
-// Parent class
-class Animal {
-    public $name;
-    public $type;
-
-    public function __construct($name, $type) {
-        $this->name = $name;
-        $this->type = $type;
-    }
-
-    public function describe() {
-        return "This is a $this->type named $this->name.";
-    }
-
-    public function makeSound() {
-        return "Some generic animal sound.";
-    }
-}
-
-// Child class
-class Cat extends Animal {
-    public function __construct($name) {
-        parent::__construct($name, "Cat");
-    }
-
-    // Overriding the makeSound method
-    public function makeSound() {
-        return "Mew! Mew!";
-    }
-}
-
-// Creating an instance of the Cat class
-$myCat = new Cat("Anarcoli");
-
-echo $myCat->describe(); // Output: This is a Cat named Anarcoli.
-echo "<br>";
-echo $myCat->makeSound(); // Output: Mew! Mew!
-```
-#### 5. Polymorphism
-- Method Overriding: A child class can provide a specific implementation of a method that is already defined in its parent class.
-```php
 class Car {
     public function display() {
         return "Car";
     }
 }
-
+	
+// Child class
 class ElectricCar extends Car {
     public function display() {
-        return "Electric Car";
+        return "Electric Car"; // Overrides parent method
     }
 }
 
+// Creating an instance of the ChildClass class
 $car = new ElectricCar();
 echo $car->display();  // Outputs: Electric Car
 ```
-#### 6. Encapsulation
+
+| Inheritance                               | Method Overriding               |
+| ----------------------------------------- | ------------------------------- |
+| Child uses parent’s features as they are. | Child redefines parent’s method |
+
+### `6. Polymorphism`
+Same method name → different behavior
+```php
+class Animal {
+    public function sound() {
+        return "Some sound";
+    }
+}
+
+class Dog extends Animal {
+    public function sound() {
+        return "Bark";
+    }
+}
+
+class Cat extends Animal {
+    public function sound() {
+        return "Meow";
+    }
+}
+
+//
+$animals = [new Dog(), new Cat()];
+
+foreach ($animals as $animal) {
+    echo $animal->sound() . "<br>";
+}
+```
+**Key Rule:**
+- Parent reference, child behavior
+### 7. Encapsulation
 Encapsulation is the concept of **restricting direct access** to an object’s internal data and requiring all interaction to happen through methods.
 
 This is achieved using **access modifiers**:
@@ -235,7 +217,6 @@ This is achieved using **access modifiers**:
 - `protected`: Accessible within the class and its subclasses.
 
 ### 🔒 Example:
-
 ```php
 class BankAccount {
     private $balance = 0;
@@ -255,8 +236,8 @@ $account = new BankAccount();
 $account->deposit(1000);
 echo $account->getBalance(); // Output: 1000
 ```
-#### 7. Abstract Classes
-Abstract classes are classes that cannot be instantiated directly and may contain both abstract and concrete methods. They serve as blueprints for other classes.
+### 8. Abstract Classes
+Abstract classes are classes that cannot be instantiated directly and may contain both abstract and normal methods. They serve as blueprints for other classes.
 ```php
 abstract class Animal {  
     protected $name;  
@@ -275,8 +256,8 @@ class Dog extends Animal {
     }  
 }
 ```
-`Use:` Abstract classes are useful when you want to define a common set of methods and properties that multiple classes will share. By using an abstract class, you can ensure that these methods and properties are implemented consistently across all the subclasses.
-#### 8. Interfaces
+`Use:` Abstract classes are useful when we want to define a common set of methods and properties that multiple classes will share. By using an abstract class, we can ensure that these methods and properties are implemented consistently across all the subclasses.
+### 9. Interfaces
 Define the methods that a class must implement without providing the implementation.
 ```php
 interface Drivable {
@@ -294,7 +275,8 @@ class Car implements Drivable {
     }
 }
 ```
-#### 9. Traits
+**Note:** A class can implement **multiple interfaces**, unlike inheritance.
+### 10. Traits
 Reusable methods within classes to avoid the limitations of single inheritance.
 ```php
 trait Gps {
@@ -310,40 +292,41 @@ class Car {
 $car = new Car();
 echo $car->getCoordinates();
 ```
-#### 10. Constructor and Destructor
+### 11. Constructor and Destructor
 - **Constructor**: A special method called when an object is instantiated.
-  1. Constructor can take arguments
+  1. Constructor can accept parameters
   2. Constructor doesn't return value
 - **Destructor**: A special method called when an object is destroyed.
-  1. Destructor can't take parameters
+  1. Destructor can't accept parameters
+  2. Destructor is **not guaranteed to run immediately** — it runs when the object is destroyed or script ends.
 ```php
-    class Person {
+class Person {
 
-        // first name of person
-        private $fname;
-        // last name of person
-        private $lname;
+    // first name of person
+    private $fname;
+    // last name of person
+    private $lname;
 
-        // Constructor
-        public function __construct($fname, $lname) {
-            echo "Initialising the object...<br/>";
-            $this->fname = $fname;
-            $this->lname = $lname;
-        }
+    // Constructor
+    public function __construct($fname, $lname) {
+        echo "Initialising the object...<br/>";
+        $this->fname = $fname;
+        $this->lname = $lname;
+    }
 
-        // Destructor
-        public function __destruct(){
-            // clean up resources or do something else
-            echo "Destroying Object...";
-        }
+    // Destructor
+    public function __destruct() {
+        // clean up resources or do something else
+        echo "Destroying Object...";
+    }
 
-        // public method to show name
-        public function showName() {
-            echo "My name is: " . $this->fname . " " . $this->lname . "<br/>";
-        }
-    }
+    // public method to show name
+    public function showName() {
+        echo "My name is: " . $this->fname . " " . $this->lname . "<br/>";
+    }
+}
 
-    // creating class object
-    $john = new Person("John", "Wick");
-    $john->showName();
+// creating class object
+$john = new Person("John", "Wick");
+$john->showName();
 ```
