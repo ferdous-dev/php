@@ -56,7 +56,7 @@ class Animal {
 $animal = new Animal("Cat");
 echo $animal->describe(); // Output: This is a Cat
 ```
-`Note:` `$this` **cannot be used in static methods**..
+`Note:` `$this` **cannot be used in static methods**.
 ##### self:: 
 `self::` refers to the **current class** (not the object). It is used to access **static properties, constants, and methods** within the same class. `self::` does **not support inheritance (late static binding)**
 ```php
@@ -68,7 +68,7 @@ class Animal {
     }
 }
 
-echo Animal::getType(); // Output: Animal
+echo Animal::getType(); // Output: Cat
 ```
 ##### parent::
 `parent::` keyword is used to access members of the parent class within a child class. It is primarily used to invoke overridden methods or access overridden properties from the parent class.
@@ -90,7 +90,7 @@ echo $cat->makeSound(); // Output: Some generic animal sound. But specifically, 
 ```
 `Note:` `parent::` can only be used to call **methods** or **static properties/methods** of the parent class.  Non-static properties are accessed via `$this`, not `parent::`.
 
-| `$this`                    | `::self`                            | `::parent`                  |
+| `$this`                    | `self::`                            | `parent::`                  |
 | -------------------------- | ----------------------------------- | --------------------------- |
 | Access current object data | Access static members of same class | Access parent class members |
 
@@ -110,7 +110,7 @@ echo Math::add(2, 3);
 ```
 **Important points:**
 - Static members are accessed using the scope resolution operator `::`, not `->`.
-- Inside a static method, you **cannot use `$this`**, because there is no object instance.
+- Inside a static method, we **cannot use `$this`**, because there is no object instance.
 - Static properties are shared across all uses of the class.
 
 **Note:**  
@@ -150,7 +150,7 @@ $child->greet();        // Output: Hello from ParentClass
 ```
 **Key Points**
 - Use `extends` keyword to inherit.
-- Child class **inherits all public and protected members(except private)** of the parent.
+- Child class **inherits all public and protected members (except private)** of the parent.
 - Child can add its own methods and properties.
 ### `5. Method Overriding`
 Method overriding allows a **child class to provide its own implementation** for a method already defined in the parent class. This allows the child class to tailor or extend the behavior of the method to meet its specific needs. When overriding, the method signature (name + parameters) should match the parent method.
@@ -208,6 +208,7 @@ foreach ($animals as $animal) {
 ```
 **Key Rule:**
 - Parent reference, child behavior
+- Polymorphism works through method overriding and inheritance.
 ### 7. Encapsulation
 Encapsulation is the concept of **restricting direct access** to an object’s internal data and requiring all interaction to happen through methods.
 
@@ -276,6 +277,13 @@ class Car implements Drivable {
 }
 ```
 **Note:** A class can implement **multiple interfaces**, unlike inheritance.
+
+| Abstract Classes | Interfaces |
+|-----------------|------------|
+| Can have properties | Cannot have properties |
+| Can have implemented methods | Only method signatures (before PHP 8) |
+| Single inheritance (extends) | Multiple implementation (implements) |
+| Use `abstract` keyword | Use `interface` keyword |
 ### 10. Traits
 Reusable methods within classes to avoid the limitations of single inheritance.
 ```php

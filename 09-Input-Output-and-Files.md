@@ -1,16 +1,22 @@
-### Standard Input and Output
+### 1. Standard Output
 
-**Standard Output:**
+Used to display data to the browser.
 ```php
 echo "This is an output statement.";
 ```
-Input (via HTML Form):
+
+---
+
+### 2. User Input (HTML Form → PHP)
+
+HTML Form
 ```html
 <!-- HTML Form -->
 <form method="post" action="input.php">
-    Enter your name: <input type="text" name="name">
+    <input type="text" name="name">
     <input type="submit">
 </form>
+
 ```
 ```php
 // PHP file
@@ -19,10 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars($_POST['name']);
 	    echo "Hello, " . $name;
 }
-```
-### File I/O
 
-**Reading from a File:**
+//Best Practice (Recommended)
+	$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
+```
+
+### 3. File Input / Output (File I/O)
+
+**Reading a File**
 ```php
 $filename = "file.txt";
 if (file_exists($filename)) {
@@ -48,9 +58,22 @@ if ($file) {
 }
 ```
 
+### 4. File Mode
+
 | Mode | Description                |
 | ---- | -------------------------- |
 | `r`  | Read only                  |
 | `w`  | Write only (truncate file) |
 | `a`  | Append to file             |
 | `r+` | Read/Write                 |
+
+---
+
+### 5. Best Practices
+
+- Always check `file_exists()`
+- Use `file_get_contents()` / `file_put_contents()` for simplicity
+- Sanitize all user input
+- Never trust form data
+- Avoid writing files from user input directly
+- Handle file permissions properly
